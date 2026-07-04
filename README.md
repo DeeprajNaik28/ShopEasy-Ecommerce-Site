@@ -1,16 +1,68 @@
-# React + Vite
+# ShopEasy 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+ShopEasy is a simple eCommerce web application built with React. It allows users to browse products, search for items, add products to a shopping cart, and simulate the checkout process. The project is designed to practice React fundamentals without using React Router or a backend database.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Display all products
+* Search products instantly
+* Add products to the shopping cart
+* View cart with selected products
+* Cart total calculation
+* Buy Now option
+* Checkout page
+* Responsive user interface
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* Vite
+* JavaScript
+* CSS
 
-## Expanding the Oxlint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```text
+src/
+│
+├── components/
+│   ├── Navbar.jsx
+│   ├── ProductCard.jsx
+│   ├── Cart.jsx
+│   └── BuyPage.jsx
+│
+├── data/
+│   └── products.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## Getting Started
+
+### Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+### Navigate to the project
+
+```bash
+cd <project-folder>
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
+
+```bash
+npm run dev
+```
+
+Open the URL displayed in the terminal (typically `http://localhost:5173`) in your browser.
