@@ -1,15 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "./components/Navbar";
 import ProductCard from "./components/ProductCard";
 import Cart from "./components/Cart";
 import BuyPage from "./components/BuyPage";
-import products from "./data/products";
 
 function App() {
+  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [cart, setCart] = useState([]);
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/products");
+      setProducts(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
@@ -43,7 +57,7 @@ function App() {
             <div className="products">
               {filteredProducts.map((product) => (
                 <ProductCard
-                  key={product.id}
+                  key={product._id}
                   product={product}
                   addToCart={addToCart}
                   buyNow={buyNow}
