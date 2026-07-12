@@ -1,142 +1,232 @@
-# ShopEasy 🛒
+# 🛒 ShopEasy - E-Commerce Website
 
-ShopEasy is a simple eCommerce web application built with React. It allows users to browse products, search for items, add products to a shopping cart, and simulate the checkout process. The project is designed to practice React fundamentals without using React Router or a backend database.
+A modern **Microservices-based E-Commerce Web Application** built using **React, Node.js, Express, and MongoDB**. The application demonstrates how different features of an e-commerce platform can be separated into independent services while sharing a common MongoDB database.
 
 ---
 
 ## 🚀 Features
 
-- Display all products
-- Search products by name
-- Add products to cart
-- View shopping cart
-- Buy individual products
-- Simple checkout page
-- MongoDB database integration
-- REST API using Express
-- Responsive user interface
+- 🛍 Browse Products
+- 🔍 Search Products
+- 🛒 Add Products to Cart
+- ❌ Remove Products from Cart
+- 💳 Buy Now
+- 📦 Place Orders
+- 💰 Payment Service (Simulation)
+- ⚡ Microservices Architecture
+- 📱 Responsive UI
 
 ---
 
-## 🛠️ Tech Stack
-
-### Frontend
-- React
-- JavaScript
-- CSS
-- Axios
-
-### Backend
-- Node.js
-- Express.js
-
-### Database
-- MongoDB Atlas
-- Mongoose
-
----
-
-## 📂 Project Structure
+# 🏗 Microservices Architecture
 
 ```
-ShopEasy/
-│
-├── public/
-│
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── ProductCard.jsx
-│   │   ├── Cart.jsx
-│   │   └── BuyPage.jsx
-│   │
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-│
-├── server/
-│   ├── config/
-│   │   └── db.js
-│   │
-│   ├── models/
-│   │   └── Product.js
-│   │
-│   ├── routes/
-│   │   └── productRoutes.js
-│   │
-│   ├── app.js
-│   ├── seed.js
-│   └── .env
-│
-├── package.json
+                 React Frontend
+                      │
+        ┌─────────────┼─────────────┐
+        │             │             │
+        ▼             ▼             ▼
+ Product API     Search API     Cart API
+   Port 5001      Port 5002     Port 5003
+        │             │             │
+        └─────────────┼─────────────┘
+                      │
+                 MongoDB Atlas
+                      │
+        ┌─────────────┼─────────────┐
+        ▼                           ▼
+ Order API                   Payment API
+ Port 5004                   Port 5005
+```
+
+---
+
+# 📂 Project Structure
+
+```
+ShopEasy-Ecommerce-Site/
+
+│── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+
+│── services/
+│   ├── product-service/
+│   ├── search-service/
+│   ├── cart-service/
+│   ├── order-service/
+│   └── payment-service/
+
 └── README.md
 ```
 
 ---
 
-## ⚙️ Installation
+# 💻 Tech Stack
 
-### Clone the repository
+## Frontend
+
+- React
+- Vite
+- Axios
+- CSS3
+
+## Backend
+
+- Node.js
+- Express.js
+
+## Database
+
+- MongoDB Atlas
+- Mongoose
+
+---
+
+# 📌 Services
+
+## 📦 Product Service (Port 5001)
+
+Handles product-related operations.
+
+### APIs
+
+- GET Products
+- Add Product
+- Update Product
+- Delete Product
+
+---
+
+## 🔍 Search Service (Port 5002)
+
+Handles searching products by name or category.
+
+### APIs
+
+- Search Products
+
+---
+
+## 🛒 Cart Service (Port 5003)
+
+Handles shopping cart operations.
+
+### APIs
+
+- Add to Cart
+- View Cart
+- Remove from Cart
+
+---
+
+## 📦 Order Service (Port 5004)
+
+Handles order placement.
+
+### APIs
+
+- Place Order
+- View Orders
+
+---
+
+## 💳 Payment Service (Port 5005)
+
+Simulates payment processing.
+
+### APIs
+
+- Process Payment
+- View Payments
+
+---
+
+# ⚙ Installation
+
+## 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/ShopEasy.git
+git clone https://github.com/DeeprajNaik28/ShopEasy-Ecommerce-Site.git
+
+cd ShopEasy-Ecommerce-Site
 ```
 
-Navigate to the project folder.
+---
+
+## 2. Install Frontend
 
 ```bash
-cd ShopEasy
-```
+cd frontend
 
-Install frontend dependencies.
-
-```bash
-npm install
-```
-
-Install backend dependencies.
-
-```bash
-cd server
 npm install
 ```
 
 ---
 
-## 🔐 Environment Variables
+## 3. Install Backend Services
 
-Create a `.env` file inside the `server` folder.
+Repeat inside every service folder.
+
+Example:
+
+```bash
+cd services/product-service
+
+npm install
+```
+
+Do the same for:
+
+- search-service
+- cart-service
+- order-service
+- payment-service
+
+---
+
+## 4. Configure Environment Variables
+
+Create a `.env` file inside each service.
 
 ```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
+PORT=5001
+MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
 ```
+
+Use different ports:
+
+| Service | Port |
+|----------|------|
+| Product | 5001 |
+| Search | 5002 |
+| Cart | 5003 |
+| Order | 5004 |
+| Payment | 5005 |
 
 ---
 
-## ▶️ Running the Project
+# ▶ Running the Project
 
-### Start Backend
+Start each backend service.
+
+Example:
 
 ```bash
-cd server
+cd services/product-service
+
 npm run dev
 ```
 
-Backend runs on:
+Start the remaining services in separate terminals.
 
-```
-http://localhost:5000
-```
-
----
-
-### Start Frontend
-
-Open another terminal.
+Then start the frontend:
 
 ```bash
+cd frontend
+
 npm run dev
 ```
 
@@ -148,49 +238,73 @@ http://localhost:5173
 
 ---
 
-## 🌐 API Endpoints
+# 📊 Database Collections
 
-### Get All Products
+MongoDB contains the following collections:
+
+- products
+- cart
+- orders
+- payments
+
+---
+
+# 🔗 API Endpoints
+
+## Product Service
 
 ```
-GET /api/products
-```
-
-### Add Product
-
-```
-POST /api/products
+GET    /api/products
+POST   /api/products
+PUT    /api/products/:id
+DELETE /api/products/:id
 ```
 
 ---
 
-## 📦 Database
+## Search Service
 
-Products are stored in MongoDB Atlas.
-
-Sample Product Document:
-
-```json
-{
-  "name": "Wireless Headphones",
-  "description": "Bluetooth Headphones",
-  "category": "Electronics",
-  "price": 1999,
-  "stock": 15,
-  "image": ""
-}
+```
+GET /api/search?query=product_name
 ```
 
 ---
 
-## 🎯 Future Enhancements
+## Cart Service
 
-- Product images
-- Remove products from cart
-- Product quantity management
-- User authentication
-- Order history
-- Payment gateway integration
-- Admin dashboard
-- Product categories
-- Product reviews
+```
+GET    /api/cart
+POST   /api/cart
+DELETE /api/cart/:id
+```
+
+---
+
+## Order Service
+
+```
+GET    /api/orders
+POST   /api/orders
+```
+
+---
+
+## Payment Service
+
+```
+GET    /api/payments
+POST   /api/payments
+```
+
+---
+
+# ✨ Future Improvements
+
+- User Authentication
+- Admin Dashboard
+- Product Images
+- Categories & Filters
+- Quantity Update
+- Product Reviews
+
+---
