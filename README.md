@@ -1,6 +1,6 @@
-# 🛒 ShopEasy - E-Commerce Website
+# 🛒 ShopEasy - Microservices E-Commerce Website
 
-A modern **Microservices-based E-Commerce Web Application** built using **React, Node.js, Express, and MongoDB**. The application demonstrates how different features of an e-commerce platform can be separated into independent services while sharing a common MongoDB database.
+A modern **Microservices-based E-Commerce Web Application** built using **React, Node.js, Express, and MongoDB Atlas**. The application separates major e-commerce functionalities into independent services while sharing a common MongoDB database.
 
 ---
 
@@ -14,7 +14,8 @@ A modern **Microservices-based E-Commerce Web Application** built using **React,
 - 📦 Place Orders
 - 💰 Payment Service (Simulation)
 - ⚡ Microservices Architecture
-- 📱 Responsive UI
+- 🌐 REST APIs
+- 📱 Responsive User Interface
 
 ---
 
@@ -27,11 +28,11 @@ A modern **Microservices-based E-Commerce Web Application** built using **React,
         │             │             │
         ▼             ▼             ▼
  Product API     Search API     Cart API
-   Port 5001      Port 5002     Port 5003
-        │             │             │
-        └─────────────┼─────────────┘
+   Port 5001      Port 5002      Port 5003
+        │             │              │
+        └─────────────┼──────────────┘
                       │
-                 MongoDB Atlas
+                MongoDB Atlas
                       │
         ┌─────────────┼─────────────┐
         ▼                           ▼
@@ -46,39 +47,44 @@ A modern **Microservices-based E-Commerce Web Application** built using **React,
 ```
 ShopEasy-Ecommerce-Site/
 
-│── frontend/
+├── frontend/
 │   ├── src/
 │   ├── public/
 │   ├── package.json
 │   └── ...
 
-│── services/
+├── services/
 │   ├── product-service/
 │   ├── search-service/
 │   ├── cart-service/
 │   ├── order-service/
 │   └── payment-service/
 
-└── README.md
+├── scripts/
+│   ├── install.bat
+│   └── run.bat
+
+├── README.md
+└── .gitignore
 ```
 
 ---
 
 # 💻 Tech Stack
 
-## Frontend
+### Frontend
 
 - React
 - Vite
 - Axios
 - CSS3
 
-## Backend
+### Backend
 
 - Node.js
 - Express.js
 
-## Database
+### Database
 
 - MongoDB Atlas
 - Mongoose
@@ -89,47 +95,55 @@ ShopEasy-Ecommerce-Site/
 
 ## 📦 Product Service (Port 5001)
 
-Handles product-related operations.
+Responsible for product management.
 
 ### APIs
 
-- GET Products
-- Add Product
-- Update Product
-- Delete Product
+```
+GET    /api/products
+POST   /api/products
+PUT    /api/products/:id
+DELETE /api/products/:id
+```
 
 ---
 
 ## 🔍 Search Service (Port 5002)
 
-Handles searching products by name or category.
+Responsible for searching products.
 
 ### APIs
 
-- Search Products
+```
+GET /api/search?query=product_name
+```
 
 ---
 
 ## 🛒 Cart Service (Port 5003)
 
-Handles shopping cart operations.
+Responsible for shopping cart management.
 
 ### APIs
 
-- Add to Cart
-- View Cart
-- Remove from Cart
+```
+GET    /api/cart
+POST   /api/cart
+DELETE /api/cart/:id
+```
 
 ---
 
 ## 📦 Order Service (Port 5004)
 
-Handles order placement.
+Responsible for order management.
 
 ### APIs
 
-- Place Order
-- View Orders
+```
+GET    /api/orders
+POST   /api/orders
+```
 
 ---
 
@@ -139,8 +153,10 @@ Simulates payment processing.
 
 ### APIs
 
-- Process Payment
-- View Payments
+```
+GET    /api/payments
+POST   /api/payments
+```
 
 ---
 
@@ -156,40 +172,32 @@ cd ShopEasy-Ecommerce-Site
 
 ---
 
-## 2. Install Frontend
+## 2. Install All Dependencies
 
-```bash
-cd frontend
+### Option 1
 
-npm install
+Run the installer script.
+
 ```
+scripts/install.bat
+```
+
+This installs all required dependencies for:
+
+- Frontend
+- Product Service
+- Search Service
+- Cart Service
+- Order Service
+- Payment Service
 
 ---
 
-## 3. Install Backend Services
-
-Repeat inside every service folder.
-
-Example:
-
-```bash
-cd services/product-service
-
-npm install
-```
-
-Do the same for:
-
-- search-service
-- cart-service
-- order-service
-- payment-service
-
----
-
-## 4. Configure Environment Variables
+## 3. Configure Environment Variables
 
 Create a `.env` file inside each service.
+
+Example:
 
 ```env
 PORT=5001
@@ -200,37 +208,36 @@ Use different ports:
 
 | Service | Port |
 |----------|------|
-| Product | 5001 |
-| Search | 5002 |
-| Cart | 5003 |
-| Order | 5004 |
-| Payment | 5005 |
+| Product Service | 5001 |
+| Search Service | 5002 |
+| Cart Service | 5003 |
+| Order Service | 5004 |
+| Payment Service | 5005 |
 
 ---
 
 # ▶ Running the Project
 
-Start each backend service.
+### Option 1 
 
-Example:
+Run:
 
-```bash
-cd services/product-service
-
-npm run dev
+```
+scripts/run.bat
 ```
 
-Start the remaining services in separate terminals.
+This automatically starts:
 
-Then start the frontend:
+- Frontend
+- Product Service
+- Search Service
+- Cart Service
+- Order Service
+- Payment Service
 
-```bash
-cd frontend
+---
 
-npm run dev
-```
-
-Frontend runs on:
+Frontend:
 
 ```
 http://localhost:5173
@@ -240,71 +247,19 @@ http://localhost:5173
 
 # 📊 Database Collections
 
-MongoDB contains the following collections:
+MongoDB Atlas contains:
 
 - products
 - cart
 - orders
 - payments
 
----
-
-# 🔗 API Endpoints
-
-## Product Service
-
-```
-GET    /api/products
-POST   /api/products
-PUT    /api/products/:id
-DELETE /api/products/:id
-```
-
----
-
-## Search Service
-
-```
-GET /api/search?query=product_name
-```
-
----
-
-## Cart Service
-
-```
-GET    /api/cart
-POST   /api/cart
-DELETE /api/cart/:id
-```
-
----
-
-## Order Service
-
-```
-GET    /api/orders
-POST   /api/orders
-```
-
----
-
-## Payment Service
-
-```
-GET    /api/payments
-POST   /api/payments
-```
-
----
-
 # ✨ Future Improvements
 
-- User Authentication
+- User Authentication 
 - Admin Dashboard
 - Product Images
-- Categories & Filters
-- Quantity Update
-- Product Reviews
-
----
+- Product Categories
+- Product Quantity Update
+- Order History
+- Product Reviews & Ratings
