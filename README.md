@@ -10,7 +10,7 @@ A modern **Microservices-based E-Commerce Web Application** built using **React,
 
 ![ShopEasy Home](screenshots/home.PNG)
 
-### 🏠 Search - Products
+### 🔍 Search - Products
 
 ![ShopEasy Search] (screenshots/search.PNG)
 
