@@ -8,23 +8,23 @@ A modern **Microservices-based E-Commerce Web Application** built using **React,
 
 ### 🏠 Home - Products
 
-![ShopEasy Home](screenshots/home.png)
+![ShopEasy Home](screenshots/home.PNG)
 
 ### 🏠 Search - Products
 
-![ShopEasy Search (screenshots/search.png)
+![ShopEasy Search] (screenshots/search.PNG)
 
 ### 🛒 Shopping Cart
 
-![ShopEasy Cart](screenshots/cart.png)
+![ShopEasy Cart](screenshots/cart.PNG)
 
 ### 💳 Checkout
 
-![ShopEasy Checkout](screenshots/checkout.png)
+![ShopEasy Checkout](screenshots/checkout.PNG)
 
 ### 📦 Order & Payment
 
-![ShopEasy Order](screenshots/order-success.png)
+![ShopEasy Order](screenshots/order-success.PNG)
 
 ---
 
